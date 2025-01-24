@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #003366;
+            margin-top: 1.5rem;
+        }
+        a {
+            display: inline-block;
+            color: #ffffff;
+            background-color: #cc0000;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        a:hover {
+            background-color: #ff3333;
+        }
+        .logout-button {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        strong {
+            color: #003366;
+        }
+        form {
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #cc0000;
+            color: #ffffff;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff3333;
+        }
+        .approve-btn {
+            background-color: #28a745; /* Green button */
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
+        }
+        .approve-btn:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <!-- Centered Log Out Button -->
+    <div class="logout-button">
+        <a href="/admin/logout">Log Out</a>
+    </div>
+    <div class="container">
+        <h2>Job Postings</h2>
+        <ul>
+            {% for job in jobs %}
+            <li>
+                <strong>{{ job.title }}</strong> at <em>{{ job.company }}</em>
+                <p>{{ job.description }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Student Applications</h2>
+        <ul>
+            {% for application in applications %}
+            <li>
+                <strong>{{ application.name }}</strong> applied for <em>{{ application.job }}</em>
+                <p>{{ application.cover_letter }}</p>
+                <form action="/admin/delete_application/{{ loop.index0 }}" method="POST" style="display:inline;">
+                    <button type="submit">Delete Application</button>
+                </form>
+                <form action="/admin/approve_application/{{ loop.index0 }}" method="POST" style="display:inline;">
+                    <button type="submit" class="approve-btn">Approve Application</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

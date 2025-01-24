@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #003366;
+            margin-bottom: 1.5rem;
+        }
+        .container {
+            max-width: 500px;
+            width: 90%;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        label {
+            font-weight: bold;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .btn-primary,
+        .btn-secondary {
+            display: inline-block;
+            flex: 1;
+            padding: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #cc0000;
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #ff3333;
+        }
+        .btn-secondary {
+            background-color: #999;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #666;
+        }
+        p {
+            text-align: center;
+            color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Login</h1>
+        {% if error %}
+        <p>{{ error }}</p>
+        {% endif %}
+        <form action="/admin/authenticate" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <div class="btn-group">
+                <button type="submit" class="btn-primary">Login</button>
+                <a href="/" class="btn-secondary">Back to Homepage</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
