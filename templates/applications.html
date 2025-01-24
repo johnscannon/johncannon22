@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Applications</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Submitted Applications</h1>
+    </header>
+    <main class="container">
+        <ul>
+            {% for app in applications %}
+                <li>
+                    <strong>Name:</strong> {{ app.name }}<br>
+                    <strong>Email:</strong> {{ app.email }}<br>
+                    <strong>Job:</strong> {{ app.job }}<br>
+                    <strong>Cover Letter:</strong> {{ app.cover_letter }}
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2025 Cascadia Tech | Job Portal Project</p>
+    </footer>
+</body>
+</html>

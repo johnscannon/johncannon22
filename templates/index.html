@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cascadia Tech Job Portal</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" href="/static/logo.png">
+    <style>
+        /* Inline CSS for header adjustments */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .header-image {
+            width: 480px; /* 4x larger than before */
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .logo-large {
+            width: 200px;
+            height: auto;
+        }
+        .job-list {
+            list-style: none;
+            padding: 0;
+        }
+        .job-list li {
+            background: #f9f9f9;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <img src="/static/student_work_1.jpg" alt="Student working at job site" class="header-image">
+            <img src="/static/logo.png" alt="Cascadia Tech Logo" class="logo-large">
+            <img src="/static/student_work_2.jpg" alt="Student collaborating at workplace" class="header-image">
+        </div>
+        <h1>Cascadia Tech Academy Job Portal</h1>
+        <p class="tagline">Helping students connect with career opportunities</p>
+        <nav>
+            <ul>
+                <li><a href="#employer">Employer Submission</a></li>
+                <li><a href="#jobs">Job Listings</a></li>
+                <li><a href="#apply">Student Applications</a></li>
+            </ul>
+        </nav>
+    </header>    
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Employer Submission Form -->
+        <section id="employer">
+            <h2>Employer Submission Form</h2>
+            <form action="/submit_job" method="POST">
+                <div class="form-group">
+                    <label for="company-name">Company Name</label>
+                    <input type="text" id="company-name" name="company_name" placeholder="Enter your company name" required>
+                </div>
+                <div class="form-group">
+                    <label for="job-title">Job Title</label>
+                    <input type="text" id="job-title" name="job_title" placeholder="Enter the job title" required>
+                </div>
+                <div class="form-group">
+                    <label for="job-description">Job Description</label>
+                    <textarea id="job-description" name="job_description" placeholder="Provide a brief job description" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact Email</label>
+                    <input type="email" id="contact" name="contact" placeholder="Enter your contact email" required>
+                </div>
+                <button type="submit" class="btn-primary">Submit Job Posting</button>
+            </form>
+        </section>
+        <hr>
+
+        <!-- Dynamic Job Listings -->
+        <section id="jobs">
+            <h2>Available Job Postings</h2>
+            <p>Browse the latest job opportunities available for students:</p>
+            <ul class="job-list">
+                <li>
+                    <strong>Web Developer Intern</strong>
+                    <p>Assist in designing and developing websites for small businesses. Work on modern front-end frameworks like React.</p>
+                    <p><em>Status: Open</em></p>
+                </li>
+                <li>
+                    <strong>Technical Support Specialist</strong>
+                    <p>Provide technical assistance and troubleshoot issues for clients using various software platforms.</p>
+                    <p><em>Status: Open</em></p>
+                </li>
+                <li>
+                    <strong>Mobile App Developer Intern</strong>
+                    <p>Collaborate on creating mobile applications for iOS and Android platforms. Basic knowledge of Flutter or Swift is a plus.</p>
+                    <p><em>Status: Open</em></p>
+                </li>
+                <li>
+                    <strong>Software Engineer Intern</strong>
+                    <p>Work with a team to develop and test backend APIs and maintain software systems using Python or Java.</p>
+                    <p><em>Status: Open</em></p>
+                </li>
+                <li>
+                    <strong>Graphic Designer Intern</strong>
+                    <p>Create visual content and design marketing materials for web and print using Adobe Creative Suite.</p>
+                    <p><em>Status: Open</em></p>
+                </li>
+            </ul>
+        </section>
+        <hr>
+
+        <!-- Student Application -->
+        <section id="apply">
+            <h2>Student Application</h2>
+            <form action="/apply" method="POST">
+                <div class="form-group">
+                    <label for="student-name">Full Name</label>
+                    <input type="text" id="student-name" name="student_name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-email">Email Address</label>
+                    <input type="email" id="student-email" name="student_email" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="job">Select Job</label>
+                    <select id="job" name="job" required>
+                        <option value="Web Developer Intern">Web Developer Intern</option>
+                        <option value="Technical Support Specialist">Technical Support Specialist</option>
+                        <option value="Mobile App Developer Intern">Mobile App Developer Intern</option>
+                        <option value="Software Engineer Intern">Software Engineer Intern</option>
+                        <option value="Graphic Designer Intern">Graphic Designer Intern</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cover-letter">Cover Letter</label>
+                    <textarea id="cover-letter" name="cover_letter" placeholder="Write your cover letter" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Apply</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Cascadia Tech Academy. All rights reserved.</p>
+        <nav>
+            <a href="#employer">Employer Submission</a> |
+            <a href="#jobs">Job Listings</a> |
+            <a href="#apply">Student Applications</a>
+        </nav>
+    </footer>
+</body>
+</html>
